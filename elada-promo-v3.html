@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elada Virtuelna Kafana – promo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&display=swap">
+<style>
+:root{--bg:#0a1a24;--p:#2594cb;--pd:#14587a;--sky:#78cdf5;--tx:#e6f3fa;--card:#14303f;--page:#06121a;color-scheme:dark}
+@media (prefers-color-scheme:light){:root{--page:#dfeef6}}
+:root[data-theme="dark"]{--page:#06121a}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--page);font-family:"Bricolage Grotesque",system-ui,sans-serif;color:var(--tx);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:env(safe-area-inset-top,0px) 12px env(safe-area-inset-bottom,0px)}
+.stage{position:relative;width:min(100%,1100px);aspect-ratio:16/9;max-height:78vh;background:var(--bg);border-radius:18px;overflow:hidden;container-type:size;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 8%,rgba(37,148,203,.55),transparent 42%),radial-gradient(circle at 88% 22%,rgba(120,205,245,.35),transparent 40%),radial-gradient(circle at 45% 100%,rgba(20,88,122,.6),transparent 48%)}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3cqh;padding:5cqw;text-align:center;opacity:0;visibility:hidden;transition:opacity .6s}
+.scene.on{opacity:1;visibility:visible}
+.scene>*{opacity:0;transform:translateY(2.5cqh)}
+.scene.on>*{animation:up .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes up{to{opacity:1;transform:none}}
+h1,h2,p{margin:0}
+.big{font-size:9cqw;font-weight:800;line-height:1;letter-spacing:-.02em}
+.mid{font-size:5.2cqw;font-weight:800;line-height:1.1;letter-spacing:-.01em}
+.sub{font-size:2.6cqw;opacity:.85;max-width:70cqw;line-height:1.4}
+.logo{background:#fff;border-radius:3cqw;padding:2cqh 3cqw;box-shadow:0 1cqh 3cqh rgba(0,0,0,.3)}
+.logo img{display:block;height:20cqh;width:auto}
+.logo span{display:block;color:var(--pd);font-weight:800;font-size:4cqw}
+.no{font-size:4.6cqw;font-weight:700;display:flex;align-items:center;gap:1.6cqw}
+.no i{display:inline-grid;place-items:center;width:5.4cqw;height:5.4cqw;border-radius:50%;background:var(--p);font-style:normal;font-size:3.4cqw}
+.bar{background:rgba(20,88,122,.9);border:1px solid rgba(255,255,255,.25);width:70cqw;padding:2cqh;border-radius:2cqw;font-weight:800;letter-spacing:.3cqw;font-size:3cqw}
+.bar small{display:block;font-weight:400;letter-spacing:0;font-size:1.8cqw;opacity:.9;margin-top:.5cqh}
+.tables{display:flex;gap:2cqw}
+.tb{width:15cqw;min-height:17cqh;background:rgba(20,48,63,.75);border:1px solid rgba(255,255,255,.2);border-radius:50% 50% 1.6cqw 1.6cqw/28% 28% 1.6cqw 1.6cqw;padding:3cqh 1cqw;font-weight:700;font-size:2.1cqw}
+.tb em{display:inline-block;margin-top:1.6cqh;padding:.4cqh 1.4cqw;background:var(--p);border-radius:99px;font-style:normal;font-size:1.7cqw}
+.chat{width:62cqw;display:flex;flex-direction:column;gap:1.6cqh;text-align:left}
+.msg{max-width:78%;padding:1.4cqh 1.8cqw;border-radius:2cqw;font-size:2.2cqw;line-height:1.3;background:rgba(37,148,203,.28)}
+.msg b{display:block;font-size:1.6cqw;color:var(--sky);margin-bottom:.3cqh}
+.msg.me{align-self:flex-end;background:var(--p)}.msg.me b{color:#dff1fb;text-align:right}
+.chat .msg{opacity:0;transform:translateY(2cqh)}
+.on .chat .msg{animation:up .6s forwards;animation-delay:var(--d)}
+.places{display:flex;gap:1.6cqw;flex-wrap:wrap;justify-content:center}
+.pl{background:var(--card);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:1.2cqh 2.2cqw;font-size:2.4cqw;font-weight:700}
+.cta{display:inline-block;background:#fff;color:var(--pd);font-weight:800;font-size:3.2cqw;padding:2cqh 4cqw;border-radius:2cqw;box-shadow:0 1cqh 3cqh rgba(0,0,0,.3)}
+.url{font-size:2.6cqw;color:var(--sky);font-weight:700}
+.prog{position:absolute;left:0;bottom:0;height:.7cqh;background:var(--sky);width:0}
+.ctl{display:flex;gap:10px;align-items:center}
+button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:10px 18px;background:var(--p);color:#fff;cursor:pointer}
+button:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.hint{font-size:.85rem;opacity:.7}
+@media (prefers-reduced-motion:reduce){.scene,.scene>*,.chat .msg{transition:none;animation-duration:.01s!important}}
+
+/* --- kadar 2: zoom na osobu i telefon --- */
+.cam{position:absolute;inset:0;padding:0;overflow:hidden}
+.cam svg{position:absolute;inset:0;width:100%;height:100%;transform-origin:66.7% 52.4%}
+.on .cam svg{animation:zoom 3s cubic-bezier(.65,0,.35,1) .3s both}
+@keyframes zoom{0%{transform:scale(1)}30%{transform:scale(1.15)}100%{transform:scale(7)}}
+.vfill{position:absolute;inset:0;background:#78cdf5;opacity:0}
+.on .vfill{animation:cin2 .5s 2.9s both}
+@keyframes cin2{to{opacity:1}}
+.vcap{position:absolute;left:0;right:0;bottom:7cqh;font-size:3.4cqw;font-weight:800;opacity:0}
+.on .vcap{animation:cin .4s .2s both,cout .3s 1.6s forwards}
+@keyframes cin{from{opacity:0;transform:translateX(-2cqw)}to{opacity:1;transform:none}}
+@keyframes cout{to{opacity:0}}
+.glow{animation:pulse 1.2s ease-in-out infinite alternate}
+@keyframes pulse{from{opacity:.75}to{opacity:1}}
+/* --- kadar 3: telefon, otvaranje app, sedanje za sto --- */
+.capbox{position:absolute;left:7cqw;top:0;bottom:0;width:30cqw;display:flex;align-items:center;text-align:left}
+.capbox p{position:absolute;font-size:3.6cqw;font-weight:800;line-height:1.15;opacity:0}
+.on .c1{animation:cin .3s .2s both,cout .25s 1.5s forwards}
+.on .c2{animation:cin .3s 1.8s both,cout .25s 3.3s forwards}
+.on .c3{animation:cin .3s 3.6s both}
+.ph{position:relative;margin-left:28cqw;height:86cqh;width:41cqh;background:#05090d;border:.9cqh solid #1d2b35;border-radius:5cqh;overflow:hidden;box-shadow:0 2cqh 6cqh rgba(0,0,0,.5);font-size:2.3cqh;text-align:left}
+.ph .ly{position:absolute;inset:0;padding:5cqh 2.2cqh 2cqh;opacity:0}
+.ph .l1{opacity:1;background:linear-gradient(160deg,#14587a,#0a1a24)}
+.ph .l2{background:linear-gradient(160deg,#2594cb,#14587a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2cqh;text-align:center}
+.ph .l3{background:var(--bg)}
+.ph .l4{background:var(--bg);padding:0}
+.on .l2{animation:fi .4s 1.7s both}.on .l3{animation:fi .4s 3.3s both}.on .l4{animation:fi .4s 4.8s both}
+@keyframes fi{to{opacity:1}}
+.clock{font-weight:700;text-align:center;font-size:2.6cqh;margin-bottom:3cqh}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4cqh 1.2cqh}
+.ic{position:relative;aspect-ratio:1;border-radius:22%;background:rgba(255,255,255,.18)}
+.ic.el{background:#fff;color:var(--pd);display:grid;place-items:center;font-weight:800;font-size:1.9cqh}
+.tap{position:absolute;left:50%;top:50%;width:8cqh;height:8cqh;margin:-4cqh 0 0 -4cqh;border-radius:50%;background:rgba(255,255,255,.6);opacity:0;pointer-events:none}
+.on .tap{animation:tapA .8s var(--t) both}
+@keyframes tapA{0%{opacity:0;transform:scale(.3)}35%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+.lg{background:#fff;color:var(--pd);font-weight:800;font-size:3cqh;padding:1.2cqh 2.6cqh;border-radius:2cqh}
+.hb{font-weight:800;font-size:3cqh;line-height:1.1}
+.bt{position:relative;background:#fff;color:var(--pd);font-weight:800;padding:1.4cqh 3cqh;border-radius:1.8cqh}
+.sh{background:rgba(20,88,122,.9);text-align:center;font-weight:800;letter-spacing:.2cqh;padding:1.6cqh;border-radius:2cqh;margin:3cqh 0 1.6cqh}
+.t4{display:grid;grid-template-columns:1fr 1fr;gap:1.6cqh}
+.t4 div{position:relative;background:rgba(20,48,63,.85);border:1px solid rgba(255,255,255,.2);border-radius:2.4cqh;padding:2.4cqh .6cqh;text-align:center;font-weight:700}
+.t4 em{display:block;margin:1cqh auto 0;width:max-content;padding:.3cqh 1.4cqh;background:var(--p);border-radius:99px;font-style:normal;font-size:1.9cqh}
+.top{background:var(--p);padding:4.6cqh 2cqh 1.6cqh;font-weight:800}
+.mm{margin:1.6cqh 2cqh 0;max-width:80%;padding:1.2cqh 1.6cqh;border-radius:2cqh;background:rgba(37,148,203,.3);opacity:0;line-height:1.25}
+.mm b{display:block;font-size:1.8cqh;color:var(--sky)}
+.mm.me{margin-left:auto;background:var(--p)}.mm.me b{color:#dff1fb;text-align:right}
+.mm.sys{background:rgba(255,255,255,.12);text-align:center;max-width:none;font-size:1.9cqh}
+.on .mm{animation:up .5s var(--m) forwards}
+.stage::after{content:"caffeelada.rs";position:absolute;top:2cqh;right:2cqw;font-size:1.7cqw;font-weight:700;color:var(--sky);opacity:.55;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="stage" id="stage" aria-label="Promo animacija Elada Virtuelna Kafana">
+  <section class="scene cam">
+    <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><radialGradient id="lamp" cx="15%" cy="30%" r="55%"><stop offset="0" stop-color="#ffb868" stop-opacity=".5"/><stop offset="1" stop-color="#ffb868" stop-opacity="0"/></radialGradient></defs>
+      <rect width="400" height="225" fill="#0d2330"/><rect width="400" height="225" fill="url(#lamp)"/>
+      <rect x="40" y="30" width="70" height="60" rx="4" fill="#14303f" stroke="#245066" stroke-width="2"/><circle cx="85" cy="55" r="8" fill="#e6f3fa" opacity=".8"/>
+      <rect y="190" width="400" height="35" fill="#14303f"/>
+      <path d="M150 225 Q150 152 205 148 Q258 152 258 225Z" fill="#2a6a8f"/>
+      <rect x="196" y="128" width="18" height="24" fill="#d9a98a"/>
+      <circle cx="205" cy="112" r="25" fill="#e8b896"/>
+      <path d="M180 108 Q182 82 206 84 Q230 84 230 106 Q214 94 180 108Z" fill="#3b2a22"/>
+      <circle cx="214" cy="114" r="2" fill="#222"/><circle cx="226" cy="114" r="2" fill="#222"/>
+      <path d="M238 168 L262 135" stroke="#2a6a8f" stroke-width="15" stroke-linecap="round"/>
+      <circle cx="263" cy="132" r="7" fill="#e8b896"/>
+      <rect x="255" y="98" width="24" height="40" rx="4" fill="#0b0f12"/>
+      <rect class="glow" x="257.5" y="101" width="19" height="34" rx="2.5" fill="#78cdf5"/>
+      <rect x="259.5" y="105" width="12" height="4" rx="2" fill="#fff" opacity=".8"/><rect x="262.5" y="112" width="12" height="4" rx="2" fill="#2594cb"/><rect x="259.5" y="119" width="10" height="4" rx="2" fill="#fff" opacity=".8"/>
+    </svg>
+    <p class="vcap">Večeras bez društva za kafu?</p>
+    <div class="vfill"></div>
+  </section>
+
+  <section class="scene">
+    <div class="capbox" style="--d:0s"><p class="c1">1. Otvorite app</p><p class="c2">2. Uđite u kafanu</p><p class="c3">3. Sedite za sto</p></div>
+    <div class="ph" style="--d:.1s">
+      <div class="ly l1"><div class="clock">9:41</div>
+        <div class="grid"><div class="ic"></div><div class="ic"></div><div class="ic"></div><div class="ic"></div><div class="ic"></div><div class="ic el">Elada<span class="tap" style="--t:1s"></span></div><div class="ic"></div><div class="ic"></div><div class="ic"></div><div class="ic"></div><div class="ic"></div><div class="ic"></div></div></div>
+      <div class="ly l2"><div class="lg">Elada</div><div class="hb">Dobro došli u Eladu</div><div style="opacity:.85">Virtuelna kafana</div><div class="bt">Izvolite u salonu!<span class="tap" style="--t:2.8s"></span></div></div>
+      <div class="ly l3"><div class="sh">ŠANK</div><div class="t4"><div>Tema dana<em>3</em></div><div>Grčka<em>5</em><span class="tap" style="--t:4.3s"></span></div><div>Muzika<em>2</em></div><div>Rođendani<em>6</em></div></div></div>
+      <div class="ly l4"><div class="top">Grčka · 6</div>
+        <div class="mm sys" style="--m:5s">Seli ste za sto</div>
+        <div class="mm" style="--m:5.6s"><b>Slađana</b>Dobro došli, sedite! ☕</div>
+        <div class="mm me" style="--m:6.1s"><b>Ognjen</b>Zdravo svima 👋</div></div>
+    </div>
+  </section>
+
+  <section class="scene">
+    <p class="no" style="--d:.2s"><i>✕</i>Bez rezervacija</p>
+    <p class="no" style="--d:.8s"><i>✕</i>Bez dodavanja prijatelja</p>
+    <p class="no" style="--d:1.4s"><i>✕</i>Bez razmene telefona</p>
+    <p class="sub" style="--d:2.1s">Samo sednite i počnite priču.</p>
+  </section>
+
+  <section class="scene">
+    <h2 class="mid" style="--d:.1s">Grčka bez reklama</h2>
+    <p class="sub" style="--d:.5s">Iskrene preporuke smeštaja iz prve ruke.</p>
+    <div class="places">
+      <span class="pl" style="--d:.9s">Mitikas</span>
+      <span class="pl" style="--d:1.2s">Elafonisos</span>
+      <span class="pl" style="--d:1.5s">Kefalonija</span>
+      <span class="pl" style="--d:1.8s">Leptokarija</span>
+    </div>
+  </section>
+
+  <section class="scene">
+    <div class="logo" style="--d:.1s"><span>Elada</span></div>
+    <h2 class="big" style="--d:.5s">Izvolite u salonu!</h2>
+    <span class="cta" style="--d:1.1s">Uđi u kafanu</span>
+    <p class="url" style="--d:1.6s">caffeelada.rs</p>
+    <p class="sub" style="--d:2.1s">Srpski · English · Ελληνικά</p>
+  </section>
+  <div class="prog" id="prog"></div>
+</div>
+
+<div class="ctl">
+  <button id="play" type="button">Pauziraj</button>
+  <button id="again" type="button">Ponovo</button>
+</div>
+<p class="hint">Trajanje oko 23 sekunde. Za video fajl snimite ekran (npr. Win+Alt+R ili snimanje ekrana na telefonu).</p>
+
+<script>
+(function(){
+  var DUR=[3500,7000,3500,4000,5000],scenes=[].slice.call(document.querySelectorAll('.scene')),
+      prog=document.getElementById('prog'),btn=document.getElementById('play'),
+      total=DUR.reduce(function(a,b){return a+b},0),idx=-1,elapsedBefore=0,sceneStart=0,paused=false,pausedAt=0,timer=null;
+  function show(i){
+    scenes.forEach(function(s,k){s.classList.remove('on')});
+    void document.body.offsetWidth;
+    scenes[i].classList.add('on');
+  }
+  function go(i){
+    if(i>=scenes.length){i=0}
+    idx=i;elapsedBefore=DUR.slice(0,i).reduce(function(a,b){return a+b},0);
+    sceneStart=performance.now();show(i);
+    clearTimeout(timer);timer=setTimeout(function(){go(idx+1)},DUR[i]);
+  }
+  function tick(){
+    if(!paused&&idx>=0){
+      var e=elapsedBefore+(performance.now()-sceneStart);
+      prog.style.width=Math.min(100,e/total*100)+'%';
+    }
+    requestAnimationFrame(tick);
+  }
+  btn.addEventListener('click',function(){
+    if(!paused){
+      paused=true;pausedAt=performance.now();clearTimeout(timer);
+      scenes[idx].querySelectorAll('*').forEach(function(el){el.style.animationPlayState='paused'});
+      btn.textContent='Nastavi';
+    }else{
+      paused=false;var d=performance.now()-pausedAt;sceneStart+=d;
+      var left=DUR[idx]-(pausedAt-(sceneStart-d));
+      scenes[idx].querySelectorAll('*').forEach(function(el){el.style.animationPlayState=''});
+      timer=setTimeout(function(){go(idx+1)},Math.max(200,left));
+      btn.textContent='Pauziraj';
+    }
+  });
+  document.getElementById('again').addEventListener('click',function(){
+    paused=false;btn.textContent='Pauziraj';
+    scenes.forEach(function(s){s.querySelectorAll('*').forEach(function(el){el.style.animationPlayState=''})});
+    go(0);
+  });
+  go(0);tick();
+})();
+</script>
+</body>
+</html>
